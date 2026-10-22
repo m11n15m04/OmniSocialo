@@ -1,0 +1,1 @@
+{% extends "base.html" %}{% block title %}{{ code }} · OmniSocial{% endblock %}{% block content %}<section class="card empty"><div class="eyebrow">ERROR {{ code }}</div><h1>Oops, we hit a dead end.</h1><p>{{ message }}</p><a class="button" href="{{ url_for('index') }}">Go home</a></section>{% endblock %}

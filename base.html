@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% block title %}OmniSocial{% endblock %}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="topbar"><a class="brand" href="{{ url_for('index') }}"><span class="logo">∞</span> OmniSocial</a>
+<nav>
+{% if me %}
+<a href="{{ url_for('index') }}">Feed</a><a href="{{ url_for('people') }}">Discover</a><a href="{{ url_for('messages') }}">Messages</a><a href="{{ url_for('profile', username=me.username) }}">Profile</a>
+<form class="inline" method="post" action="{{ url_for('logout') }}"><button class="navbutton">Log out</button></form>
+{% else %}<a href="{{ url_for('login') }}">Log in</a><a class="button small" href="{{ url_for('register') }}">Join free</a>{% endif %}
+</nav></header>
+<main class="wrap">
+{% with messages = get_flashed_messages(with_categories=true) %}{% if messages %}<div class="flashes">{% for category,message in messages %}<div class="flash {{ category }}">{{ message }}</div>{% endfor %}</div>{% endif %}{% endwith %}
+{% block content %}{% endblock %}
+<footer>OmniSocial · Community first. <span>Starter MVP — not yet end-to-end encrypted.</span></footer>
+</main>
+</body></html>
