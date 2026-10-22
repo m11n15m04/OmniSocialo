@@ -8,7 +8,7 @@ from werkzeug.utils import secure_filename
 BASE = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(BASE, "omnisocial.db")
 UPLOAD_DIR = os.path.join(BASE, "static", "uploads")
-os.makedirs(UPLOAD_DIR,=True) 
+os.makedirs(UPLOAD_DIR,exist_ok=True) 
     
 
        
