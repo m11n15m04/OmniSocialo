@@ -8,8 +8,11 @@ from werkzeug.utils import secure_filename
 BASE = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(BASE, "omnisocial.db")
 UPLOAD_DIR = os.path.join(BASE, "static", "uploads")
-os.makedirs(UPLOAD_DIR, exist_ok=True)
+os.makedirs(UPLOAD_DIR, 
+    
 
+       
+app= Flask(__name__)=True)
 gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --timeout 120
 app.secret_key = os.environ.get("OMNISOCIAL_SECRET", "change-this-development-secret-before-deploying")
 app.config["MAX_CONTENT_LENGTH"] = 25 * 1024 * 1024
