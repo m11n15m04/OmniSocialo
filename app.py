@@ -13,7 +13,6 @@ os.makedirs(UPLOAD_DIR,exist_ok=True)
 
        
 app= Flask(__name__)
-gunicorn app:app --bind 0.0.0.0:$PORT --workers 1 --timeout 120
 app.secret_key = os.environ.get("OMNISOCIAL_SECRET", "change-this-development-secret-before-deploying")
 app.config["MAX_CONTENT_LENGTH"] = 25 * 1024 * 1024
 ALLOWED = {"png", "jpg", "jpeg", "gif", "webp", "mp4", "webm"}
